@@ -71,10 +71,7 @@ nav .wrap{display:flex;align-items:center;gap:22px;height:80px}
 .film{position:absolute;inset:0;background:#050403}
 .scene{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease}
 .scene.on{opacity:1}
-.scene svg{position:absolute;top:0;bottom:0;inset-inline-start:24%;width:100%;height:100%}
-@media(max-width:800px){.scene svg{inset-inline-start:0;opacity:.55}}
 
-.scene.on svg{animation:kb 9s ease-out forwards}
 @keyframes kb{from{transform:scale(1.14) translateX(1.5%)}to{transform:scale(1)}}
 .sig{stroke-dasharray:900;stroke-dashoffset:900}
 .on .sig{animation:sig 3.4s 1s ease-in-out forwards}
@@ -95,6 +92,18 @@ nav .wrap{display:flex;align-items:center;gap:22px;height:80px}
 @keyframes counter{0%,100%{transform:rotate(5deg)}50%{transform:rotate(-5deg)}}
 .gavel{transform-origin:1290px 690px;animation:strike 3s ease-in infinite}
 @keyframes strike{0%,60%,100%{transform:rotate(-28deg)}72%{transform:rotate(4deg)}78%{transform:rotate(-2deg)}}
+.scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.9) contrast(1.06)}
+.scene.on img{animation:kb 8s ease-out forwards}
+.hseal{position:absolute;z-index:2;width:clamp(120px,13vw,190px);bottom:30%;inset-inline-end:7%;overflow:visible}
+.hseal .imp{opacity:0;transform-box:fill-box;transform-origin:center;mix-blend-mode:screen}
+.scene.on .hseal .imp{animation:thud 1.1s 2.4s cubic-bezier(.3,1.4,.5,1) forwards}
+@keyframes thud{0%{opacity:0;transform:scale(2.2) rotate(-24deg)}55%{opacity:.95;transform:scale(.94) rotate(-10deg)}100%{opacity:.9;transform:scale(1) rotate(-12deg)}}
+.hseal .rip{opacity:0;transform-box:fill-box;transform-origin:center}
+.scene.on .hseal .rip{animation:rip 1.4s 3s ease-out forwards}
+.scene::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 70%,rgba(246,226,160,.18),transparent 45%);opacity:0;transition:opacity 1s}
+.scene.on::after{animation:flash 1.2s 3s ease-out}
+@keyframes flash{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+@media(max-width:800px){.hseal{bottom:auto;top:16%;width:110px}}
 #dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .grain{position:absolute;inset:-50%;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain .5s steps(3) infinite}
 @keyframes grain{33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}}
@@ -273,49 +282,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-bet
 </div></nav>
 
 <header class="hero bars" id="top">
-<div class="film" aria-hidden="true">
-<!-- scene 1: signing -->
-<div class="scene on" data-s="0"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-<defs><radialGradient id="lampA" cx=".62" cy=".3" r=".7"><stop offset="0" stop-color="#5a4318"/><stop offset=".45" stop-color="#1d150a"/><stop offset="1" stop-color="#050403"/></radialGradient>
-<linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1a0c"/><stop offset="1" stop-color="#0c0704"/></linearGradient>
-<linearGradient id="pap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#d9cfb6"/></linearGradient></defs>
-<rect width="1600" height="900" fill="url(#lampA)"/>
-<path d="M0 520 1600 470V900H0Z" fill="url(#desk)"/>
-<g opacity=".18" stroke="#d4af37"><path d="M0 560 1600 510M0 640 1600 590M0 740 1600 690" /></g>
-<g transform="translate(980 120)" class="lamp"><path d="M60 0h160l50 120H10Z" fill="#1b130a" stroke="#6b5220"/><rect x="132" y="120" width="16" height="280" fill="#2a1d0e"/><ellipse cx="140" cy="400" rx="90" ry="16" fill="#1b130a"/><path d="M10 120h260L420 520H-140Z" fill="#f6e2a0" opacity=".07"/></g>
-<g transform="translate(460 455) rotate(-4)"><path d="M0 0h600l40 330H-40Z" fill="#000" opacity=".35" transform="translate(14 16)"/><path d="M0 0h600l40 330H-40Z" fill="url(#pap)"/>
-<text x="300" y="58" font-family="Cormorant Garamond,serif" font-size="30" font-weight="600" text-anchor="middle" fill="#2a2010" letter-spacing="6">POWER OF ATTORNEY</text>
-<text x="300" y="92" font-family="Amiri,serif" font-size="24" text-anchor="middle" fill="#6b5220">وكالة</text>
-<g fill="#cdbf9d"><rect x="40" y="120" width="520" height="7" rx="3"/><rect x="36" y="142" width="480" height="7" rx="3"/><rect x="32" y="164" width="530" height="7" rx="3"/><rect x="28" y="186" width="420" height="7" rx="3"/></g></g>
-<path class="sig" d="M560 610c40-70 70 40 110-20s60-60 90 0 50 30 80-10 60 20 100 0 40-30 70-10" fill="none" stroke="#14100a" stroke-width="4" stroke-linecap="round"/>
-<g class="pen"><g transform="rotate(-38) translate(0 -2)"><rect x="0" y="-9" width="260" height="18" rx="9" fill="#0d0a06" stroke="#d4af37" stroke-width="1.5"/><rect x="160" y="-10" width="14" height="20" fill="url(#gA)"/><path d="M0-6-30 0 0 6Z" fill="url(#gA)"/><path d="M-30 0 0-1" stroke="#000"/></g></g>
-</svg></div>
-<!-- scene 2: stamping -->
-<div class="scene" data-s="1"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-<defs><radialGradient id="lampB" cx=".55" cy=".35" r=".75"><stop offset="0" stop-color="#4e3a14"/><stop offset=".5" stop-color="#160f07"/><stop offset="1" stop-color="#040302"/></radialGradient></defs>
-<rect width="1600" height="900" fill="url(#lampB)"/>
-<path d="M0 560 1600 520V900H0Z" fill="url(#desk)"/>
-<g transform="translate(600 500) rotate(3)"><rect width="520" height="330" fill="#000" opacity=".35" transform="translate(12 14)"/><rect width="520" height="330" fill="url(#pap)"/>
-<text x="260" y="54" font-family="Cormorant Garamond,serif" font-size="26" font-weight="600" text-anchor="middle" fill="#2a2010" letter-spacing="5">CERTIFIED TRANSLATION</text>
-<g fill="#cdbf9d"><rect x="36" y="86" width="448" height="7" rx="3"/><rect x="36" y="108" width="410" height="7" rx="3"/><rect x="36" y="130" width="440" height="7" rx="3"/><rect x="36" y="152" width="300" height="7" rx="3"/></g>
-<circle class="ripple" cx="380" cy="240" r="60" fill="none" stroke="#d4af37" stroke-width="3"/>
-<g class="mark"><circle cx="380" cy="240" r="62" fill="none" stroke="#7a1f2b" stroke-width="5"/><circle cx="380" cy="240" r="50" fill="none" stroke="#7a1f2b" stroke-width="2"/><text x="380" y="236" font-family="Cormorant Garamond,serif" font-size="22" font-weight="600" text-anchor="middle" fill="#7a1f2b" letter-spacing="3">EJADA</text><text x="380" y="262" font-family="Amiri,serif" font-size="18" text-anchor="middle" fill="#7a1f2b">إجادة</text></g></g>
-<g class="stamp"><g transform="translate(980 610)"><ellipse cx="0" cy="40" rx="78" ry="16" fill="#000" opacity=".4"/><rect x="-74" y="0" width="148" height="34" rx="6" fill="url(#gB)"/><rect x="-70" y="30" width="140" height="10" fill="#3d1016"/><path d="M-26 0c0-50-30-70-30-120h112c0 50-30 70-30 120Z" fill="#120d07" stroke="#6b5220"/><ellipse cx="0" cy="-130" rx="62" ry="40" fill="#1a130a" stroke="url(#gA)" stroke-width="3"/><ellipse cx="-14" cy="-142" rx="22" ry="10" fill="#fff" opacity=".12"/></g></g>
-</svg></div>
-<!-- scene 3: justice -->
-<div class="scene" data-s="2"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-<defs><radialGradient id="lampC" cx=".5" cy=".3" r=".75"><stop offset="0" stop-color="#3e2f12"/><stop offset=".55" stop-color="#120d07"/><stop offset="1" stop-color="#030202"/></radialGradient></defs>
-<rect width="1600" height="900" fill="url(#lampC)"/>
-<g opacity=".5"><g fill="#1a120a" stroke="#4a3816"><rect x="160" y="420" width="70" height="300"/><rect x="236" y="380" width="56" height="340"/><rect x="298" y="440" width="80" height="280"/><rect x="384" y="400" width="60" height="320"/></g><g fill="#d4af37" opacity=".5"><rect x="160" y="460" width="70" height="4"/><rect x="236" y="420" width="56" height="4"/><rect x="298" y="480" width="80" height="4"/><rect x="384" y="440" width="60" height="4"/></g></g>
-<path d="M0 720h1600v180H0Z" fill="url(#desk)"/>
-<g><rect x="790" y="330" width="20" height="380" fill="url(#gA)"/><path d="M720 720h160l-20-30H740Z" fill="url(#gA)"/><circle cx="800" cy="320" r="18" fill="url(#gA)"/>
-<g class="beam"><rect x="560" y="322" width="480" height="12" rx="6" fill="url(#gA)"/>
-<g class="pan" transform="translate(580 334)"><path d="M0 0-60 170M0 0 60 170" stroke="#d4af37" stroke-width="2" fill="none"/><path d="M-90 170h180c-10 40-50 60-90 60s-80-20-90-60Z" fill="url(#gB)"/></g>
-<g class="pan" transform="translate(1020 334)"><path d="M0 0-60 170M0 0 60 170" stroke="#d4af37" stroke-width="2" fill="none"/><path d="M-90 170h180c-10 40-50 60-90 60s-80-20-90-60Z" fill="url(#gB)"/></g></g></g>
-<g class="gavel"><g transform="translate(1290 690)"><rect x="-10" y="-210" width="20" height="200" rx="8" fill="#2a1a0c" stroke="#6b5220" transform="rotate(-60)"/></g><g transform="translate(1290 690) rotate(-60) translate(0 -210)"><rect x="-70" y="-30" width="140" height="60" rx="14" fill="#2a1a0c" stroke="url(#gA)" stroke-width="3"/><rect x="-74" y="-24" width="12" height="48" rx="4" fill="url(#gA)"/><rect x="62" y="-24" width="12" height="48" rx="4" fill="url(#gA)"/></g></g>
-<ellipse cx="1180" cy="712" rx="110" ry="20" fill="#1a110a" stroke="#6b5220"/>
-</svg></div>
-<canvas id="dust"></canvas>
+<div class="film" aria-hidden="true"><div class="scene on" data-s="0"><img src="img/p4.jpg" alt="" style="object-position:60% 40%"><svg class="hseal" viewBox="0 0 200 200"><circle class="rip" cx="100" cy="100" r="80" fill="none" stroke="#f6e2a0" stroke-width="3"/><g class="imp"><circle cx="100" cy="100" r="86" fill="none" stroke="#9e2b3a" stroke-width="7"/><circle cx="100" cy="100" r="70" fill="none" stroke="#9e2b3a" stroke-width="2.5"/><text x="100" y="94" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="30" font-weight="600" fill="#9e2b3a" letter-spacing="5">EJADA</text><text x="100" y="128" text-anchor="middle" font-family="Amiri,serif" font-size="26" fill="#9e2b3a">إجادة</text><text x="100" y="152" text-anchor="middle" font-family="Manrope,sans-serif" font-size="10" font-weight="600" fill="#9e2b3a" letter-spacing="3">CERTIFIED</text></g></svg></div><div class="scene" data-s="1"><img src="img/p2.jpg" alt="" style="object-position:70% 30%"><svg class="hseal" viewBox="0 0 200 200"><circle class="rip" cx="100" cy="100" r="80" fill="none" stroke="#f6e2a0" stroke-width="3"/><g class="imp"><circle cx="100" cy="100" r="86" fill="none" stroke="#9e2b3a" stroke-width="7"/><circle cx="100" cy="100" r="70" fill="none" stroke="#9e2b3a" stroke-width="2.5"/><text x="100" y="94" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="30" font-weight="600" fill="#9e2b3a" letter-spacing="5">EJADA</text><text x="100" y="128" text-anchor="middle" font-family="Amiri,serif" font-size="26" fill="#9e2b3a">إجادة</text><text x="100" y="152" text-anchor="middle" font-family="Manrope,sans-serif" font-size="10" font-weight="600" fill="#9e2b3a" letter-spacing="3">CERTIFIED</text></g></svg></div><div class="scene" data-s="2"><img src="img/p3.jpg" alt="" style="object-position:55% 30%"><svg class="hseal" viewBox="0 0 200 200"><circle class="rip" cx="100" cy="100" r="80" fill="none" stroke="#f6e2a0" stroke-width="3"/><g class="imp"><circle cx="100" cy="100" r="86" fill="none" stroke="#9e2b3a" stroke-width="7"/><circle cx="100" cy="100" r="70" fill="none" stroke="#9e2b3a" stroke-width="2.5"/><text x="100" y="94" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="30" font-weight="600" fill="#9e2b3a" letter-spacing="5">EJADA</text><text x="100" y="128" text-anchor="middle" font-family="Amiri,serif" font-size="26" fill="#9e2b3a">إجادة</text><text x="100" y="152" text-anchor="middle" font-family="Manrope,sans-serif" font-size="10" font-weight="600" fill="#9e2b3a" letter-spacing="3">CERTIFIED</text></g></svg></div><div class="scene" data-s="3"><img src="img/p1.jpg" alt="" style="object-position:40% 30%"><svg class="hseal" viewBox="0 0 200 200"><circle class="rip" cx="100" cy="100" r="80" fill="none" stroke="#f6e2a0" stroke-width="3"/><g class="imp"><circle cx="100" cy="100" r="86" fill="none" stroke="#9e2b3a" stroke-width="7"/><circle cx="100" cy="100" r="70" fill="none" stroke="#9e2b3a" stroke-width="2.5"/><text x="100" y="94" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="30" font-weight="600" fill="#9e2b3a" letter-spacing="5">EJADA</text><text x="100" y="128" text-anchor="middle" font-family="Amiri,serif" font-size="26" fill="#9e2b3a">إجادة</text><text x="100" y="152" text-anchor="middle" font-family="Manrope,sans-serif" font-size="10" font-weight="600" fill="#9e2b3a" letter-spacing="3">CERTIFIED</text></g></svg></div><canvas id="dust"></canvas>
 </div>
 <div class="grain"></div><div class="vig"></div>
 <div class="wrap htxt">
@@ -327,7 +294,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-bet
 <p lang="ar">ترجمة قانونية معتمدة بأكثر من 50 لغة، وخدمات توثيق الوكالات والإنذارات العدلية، نصيغها بالعربية والإنجليزية ونستكمل توثيقها لك.</p>
 <div class="cta"><a class="btn wa" href="https://wa.me/971585884740?text=Hello%20Ejada%2C%20I%27d%20like%20a%20quote."><svg aria-hidden="true"><use href="#wa"/></svg><span lang="en">Get a quote on WhatsApp</span><span lang="ar">اطلب عرض سعر عبر واتساب</span></a><a class="btn gl" href="#pillars"><span lang="en">Explore services</span><span lang="ar">اكتشف خدماتنا</span></a></div>
 </div></div>
-<div class="cap" aria-hidden="true"><span id="capt">Signing</span><i class="on"></i><i></i><i></i></div>
+<div class="cap" aria-hidden="true"><span id="capt">Consultation</span><i class="on"></i><i></i><i></i><i></i></div>
 </header>
 
 <section class="pill" id="pillars"><div class="wrap">
@@ -360,11 +327,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-bet
 
 <section class="state"><p id="stEn" lang="en">From a single birth certificate to a court judgment, we translate meaning, not just words. Every page is checked line by line, stamped by a licensed legal translator, and accepted across the UAE.</p><p id="stAr" lang="ar">من شهادة ميلاد إلى حكم قضائي، نترجم المعنى لا الكلمات فقط. نراجع كل صفحة سطراً بسطر، ويختمها مترجم قانوني مرخّص، لتُقبل في جميع أنحاء الإمارات.</p></section>
 
-<section class="inside" id="inside"><div class="wrap">
-<div class="kick rvl"><span lang="en">Inside Ejada</span><span lang="ar">داخل إجادة</span></div>
-<h2 class="fold" lang="en" style="margin-top:14px">Personal service, <em class="gt">in person</em></h2><h2 class="fold" lang="ar" style="margin-top:14px">خدمة شخصية <span class="gt">وجهاً لوجه</span></h2>
-<div class="sg"><figure class="shot rvl p1"><img src="img/p1.jpg" alt="" loading="lazy"><figcaption><b lang="en">Consultation at our Bur Dubai office</b><b lang="ar">استشارة في مكتبنا ببر دبي</b><span lang="en">We listen first, then advise exactly what your document needs.</span><span lang="ar">نستمع أولاً، ثم نوضح لك بدقة ما يحتاجه مستندك.</span></figcaption></figure><figure class="shot rvl p2"><img src="img/p2.jpg" alt="" loading="lazy"><figcaption><b lang="en">Reviewed with you, line by line</b><b lang="ar">نراجعها معك سطراً بسطر</b><span lang="en">Names, numbers and dates checked against the original.</span><span lang="ar">الأسماء والأرقام والتواريخ مطابقة للأصل.</span></figcaption></figure><figure class="shot rvl p3"><img src="img/p3.jpg" alt="" loading="lazy"><figcaption><b lang="en">Every question answered</b><b lang="ar">إجابة على كل استفسار</b><span lang="en">Clear guidance in Arabic and English, in person or by phone.</span><span lang="ar">توجيه واضح بالعربية والإنجليزية، حضورياً أو هاتفياً.</span></figcaption></figure><figure class="shot rvl p4"><img src="img/p4.jpg" alt="" loading="lazy"><figcaption><b lang="en">Trusted by companies and law offices</b><b lang="ar">موضع ثقة الشركات والمكاتب القانونية</b><span lang="en">Corporate documents, contracts and licences handled with care.</span><span lang="ar">نتعامل مع المستندات والعقود والرخص التجارية بعناية.</span></figcaption></figure></div>
-</div></section>
+
 
 <section class="stack" id="more">
 <div class="kick rvl" style="margin-bottom:26px"><span lang="en">Also translated with care</span><span lang="ar">نترجم أيضاً بعناية</span></div>
@@ -373,6 +336,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-bet
 <article class="card" style="--i:2;background:linear-gradient(140deg,#e8d39a,#b8902a);color:#140f05"><div><div class="n">iii.</div><h3 lang="en">Personal</h3><h3 lang="ar">المستندات الشخصية</h3><p lang="en">Birth and marriage certificates, degrees, passports and driving licences.</p><p lang="ar">شهادات الميلاد والزواج والشهادات الدراسية وجوازات السفر ورخص القيادة.</p></div><div class="art"><svg viewBox="0 0 300 300" aria-hidden="true"><rect x="70" y="80" width="160" height="110" rx="10" fill="#140f05"/><circle cx="115" cy="130" r="22" fill="#e8d39a"/><path d="M90 175c6-16 44-16 50 0" fill="#e8d39a"/><g fill="#e8d39a"><rect x="152" y="112" width="60" height="7"/><rect x="152" y="128" width="46" height="7"/><rect x="152" y="144" width="54" height="7"/></g></svg></div></article>
 <article class="card" style="--i:3;background:linear-gradient(140deg,#f6f1e5,#d9cfb4);color:#140f05"><div><div class="n">iv.</div><h3 lang="en">50+ Languages</h3><h3 lang="ar">أكثر من 50 لغة</h3><p lang="en">Arabic and English are our specialty, with a certified network for more than fifty languages.</p><p lang="ar">العربية والإنجليزية تخصصنا، مع شبكة مترجمين معتمدين لأكثر من خمسين لغة.</p><ul><li>Français</li><li>中文</li><li>Русский</li><li>हिन्दी</li><li>Español</li><li>Türkçe</li><li>اردو</li></ul></div><div class="art"><svg viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="100" fill="none" stroke="#140f05" stroke-width="2.5"/><ellipse cx="150" cy="150" rx="44" ry="100" fill="none" stroke="#140f05" stroke-width="2"/><path d="M50 150h200M64 100h172M64 200h172" stroke="#140f05" stroke-width="2"/><g><animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="16s" repeatCount="indefinite"/><circle cx="150" cy="38" r="9" fill="#8c6b14"/><circle cx="262" cy="150" r="7" fill="#8c6b14"/></g></svg></div></article>
 </section>
+
+<section class="inside" id="inside"><div class="wrap">
+<div class="kick rvl"><span lang="en">Inside Ejada</span><span lang="ar">داخل إجادة</span></div>
+<h2 class="fold" lang="en" style="margin-top:14px">Personal service, <em class="gt">in person</em></h2><h2 class="fold" lang="ar" style="margin-top:14px">خدمة شخصية <span class="gt">وجهاً لوجه</span></h2>
+<div class="sg"><figure class="shot rvl p1"><img src="img/p1.jpg" alt="" loading="lazy"><figcaption><b lang="en">Consultation at our Bur Dubai office</b><b lang="ar">استشارة في مكتبنا ببر دبي</b><span lang="en">We listen first, then advise exactly what your document needs.</span><span lang="ar">نستمع أولاً، ثم نوضح لك بدقة ما يحتاجه مستندك.</span></figcaption></figure><figure class="shot rvl p2"><img src="img/p2.jpg" alt="" loading="lazy"><figcaption><b lang="en">Reviewed with you, line by line</b><b lang="ar">نراجعها معك سطراً بسطر</b><span lang="en">Names, numbers and dates checked against the original.</span><span lang="ar">الأسماء والأرقام والتواريخ مطابقة للأصل.</span></figcaption></figure><figure class="shot rvl p3"><img src="img/p3.jpg" alt="" loading="lazy"><figcaption><b lang="en">Every question answered</b><b lang="ar">إجابة على كل استفسار</b><span lang="en">Clear guidance in Arabic and English, in person or by phone.</span><span lang="ar">توجيه واضح بالعربية والإنجليزية، حضورياً أو هاتفياً.</span></figcaption></figure><figure class="shot rvl p4"><img src="img/p4.jpg" alt="" loading="lazy"><figcaption><b lang="en">Trusted by companies and law offices</b><b lang="ar">موضع ثقة الشركات والمكاتب القانونية</b><span lang="en">Corporate documents, contracts and licences handled with care.</span><span lang="ar">نتعامل مع المستندات والعقود والرخص التجارية بعناية.</span></figcaption></figure></div>
+</div></section>
 
 <section class="emb"><div class="wrap">
 <span class="em3" data-coin data-layers="14"></span>
@@ -426,7 +395,7 @@ setTimeout(()=>document.querySelectorAll('.fold,.rvl').forEach(el=>el.classList.
 addEventListener('scroll',()=>$('nav').classList.toggle('solid',scrollY>40),{passive:true});
 // film scenes
 const sc=[...document.querySelectorAll('.scene')],cp=$('capt'),bars=[...document.querySelectorAll('.cap i')];
-const NM={en:['Signing','Certifying','Justice'],ar:['التوقيع','الاعتماد','العدالة']};let si=0;
+const NM={en:['Consultation','Review','Guidance','Certified'],ar:['الاستشارة','المراجعة','التوجيه','الاعتماد']};let si=0;
 const show=i=>{sc.forEach((s,k)=>s.classList.toggle('on',k===i));bars.forEach((b,k)=>{b.classList.remove('on');if(k===i){void b.offsetWidth;b.classList.add('on')}});cp.textContent=NM[root.lang][i]};
 if(!reduce)setInterval(()=>{si=(si+1)%sc.length;show(si)},7000);
 // dust
