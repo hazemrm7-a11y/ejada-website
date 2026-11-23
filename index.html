@@ -94,19 +94,7 @@ nav .wrap{display:flex;align-items:center;gap:22px;height:80px}
 @keyframes strike{0%,60%,100%{transform:rotate(-28deg)}72%{transform:rotate(4deg)}78%{transform:rotate(-2deg)}}
 .scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.9) contrast(1.06)}
 .scene.on img{animation:kb 8s ease-out forwards}
-.hdoc{position:absolute;z-index:2;width:clamp(170px,15vw,250px);bottom:22%;inset-inline-end:7%;overflow:visible;transform:rotate(-7deg);filter:drop-shadow(0 18px 24px rgba(0,0,0,.5))}
-.hdoc .paper{opacity:0;transform:translateY(60px)}
-.scene.on .hdoc .paper{animation:place .9s .4s cubic-bezier(.2,.8,.2,1) forwards}
-@keyframes place{to{opacity:1;transform:none}}
-.hdoc .stmp{opacity:0;transform:translateY(-260px)}
-.scene.on .hdoc .stmp{animation:press 2.6s 1.5s cubic-bezier(.6,0,.4,1) forwards}
-@keyframes press{0%{opacity:0;transform:translateY(-260px)}15%{opacity:1}40%,52%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-300px)}}
-.hdoc .imp{opacity:0;transform-box:fill-box;transform-origin:center}
-.scene.on .hdoc .imp{animation:mk .5s 2.55s ease-out forwards}
-@keyframes mk{from{opacity:0;transform:scale(1.15)}to{opacity:.9;transform:rotate(-10deg)}}
-.hdoc .rip{opacity:0;transform-box:fill-box;transform-origin:center}
-.scene.on .hdoc .rip{animation:rip 1.4s 2.55s ease-out forwards}
-@media(max-width:800px){.hdoc{bottom:auto;top:14%;width:130px}}
+
 #dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .grain{position:absolute;inset:-50%;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain .5s steps(3) infinite}
 @keyframes grain{33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}}
@@ -285,39 +273,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-bet
 </div></nav>
 
 <header class="hero bars" id="top">
-<div class="film" aria-hidden="true"><div class="scene on" data-s="0"><img src="img/p4.jpg" alt="" style="object-position:60% 40%"><svg class="hdoc" viewBox="0 0 320 420"><defs><linearGradient id="dp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf7ec"/><stop offset="1" stop-color="#ddd3ba"/></linearGradient></defs>
-<g class="paper"><rect x="18" y="26" width="270" height="360" rx="4" fill="#000" opacity=".45" transform="translate(10 12)"/><rect x="18" y="26" width="270" height="360" rx="4" fill="url(#dp)"/>
-<text x="153" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="600" fill="#2a2010" letter-spacing="1.5">CERTIFIED TRANSLATION</text>
-<text x="153" y="90" text-anchor="middle" font-family="Amiri,serif" font-size="15" fill="#6b5220">ترجمة معتمدة</text>
-<g fill="#cdbf9d"><rect x="40" y="112" width="226" height="5" rx="2"/><rect x="40" y="126" width="200" height="5" rx="2"/><rect x="40" y="140" width="216" height="5" rx="2"/><rect x="40" y="154" width="180" height="5" rx="2"/><rect x="40" y="176" width="226" height="5" rx="2"/><rect x="40" y="190" width="206" height="5" rx="2"/><rect x="40" y="204" width="160" height="5" rx="2"/></g>
-<path d="M44 330c10-18 18 8 28-6s14-10 22 0 12 4 20-4" stroke="#14100a" stroke-width="2" fill="none"/>
-<circle class="rip" cx="208" cy="312" r="46" fill="none" stroke="#f6e2a0" stroke-width="3"/>
-<g class="imp"><circle cx="208" cy="312" r="48" fill="none" stroke="#9e2b3a" stroke-width="5"/><circle cx="208" cy="312" r="38" fill="none" stroke="#9e2b3a" stroke-width="1.6"/><text x="208" y="308" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" font-weight="600" fill="#9e2b3a" letter-spacing="3">EJADA</text><text x="208" y="328" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#9e2b3a">إجادة</text></g></g>
-<g class="stmp"><ellipse cx="208" cy="318" rx="52" ry="10" fill="#000" opacity=".35"/><rect x="160" y="290" width="96" height="24" rx="5" fill="url(#gB)"/><rect x="163" y="312" width="90" height="7" fill="#5a1720"/><path d="M190 290c0-34-18-46-18-80h72c0 34-18 46-18 80Z" fill="#120d07" stroke="#6b5220"/><ellipse cx="208" cy="204" rx="40" ry="24" fill="#1a130a" stroke="url(#gA)" stroke-width="2.5"/></g></svg></div><div class="scene" data-s="1"><img src="img/p2.jpg" alt="" style="object-position:70% 30%"><svg class="hdoc" viewBox="0 0 320 420"><defs><linearGradient id="dp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf7ec"/><stop offset="1" stop-color="#ddd3ba"/></linearGradient></defs>
-<g class="paper"><rect x="18" y="26" width="270" height="360" rx="4" fill="#000" opacity=".45" transform="translate(10 12)"/><rect x="18" y="26" width="270" height="360" rx="4" fill="url(#dp)"/>
-<text x="153" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="600" fill="#2a2010" letter-spacing="1.5">CERTIFIED TRANSLATION</text>
-<text x="153" y="90" text-anchor="middle" font-family="Amiri,serif" font-size="15" fill="#6b5220">ترجمة معتمدة</text>
-<g fill="#cdbf9d"><rect x="40" y="112" width="226" height="5" rx="2"/><rect x="40" y="126" width="200" height="5" rx="2"/><rect x="40" y="140" width="216" height="5" rx="2"/><rect x="40" y="154" width="180" height="5" rx="2"/><rect x="40" y="176" width="226" height="5" rx="2"/><rect x="40" y="190" width="206" height="5" rx="2"/><rect x="40" y="204" width="160" height="5" rx="2"/></g>
-<path d="M44 330c10-18 18 8 28-6s14-10 22 0 12 4 20-4" stroke="#14100a" stroke-width="2" fill="none"/>
-<circle class="rip" cx="208" cy="312" r="46" fill="none" stroke="#f6e2a0" stroke-width="3"/>
-<g class="imp"><circle cx="208" cy="312" r="48" fill="none" stroke="#9e2b3a" stroke-width="5"/><circle cx="208" cy="312" r="38" fill="none" stroke="#9e2b3a" stroke-width="1.6"/><text x="208" y="308" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" font-weight="600" fill="#9e2b3a" letter-spacing="3">EJADA</text><text x="208" y="328" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#9e2b3a">إجادة</text></g></g>
-<g class="stmp"><ellipse cx="208" cy="318" rx="52" ry="10" fill="#000" opacity=".35"/><rect x="160" y="290" width="96" height="24" rx="5" fill="url(#gB)"/><rect x="163" y="312" width="90" height="7" fill="#5a1720"/><path d="M190 290c0-34-18-46-18-80h72c0 34-18 46-18 80Z" fill="#120d07" stroke="#6b5220"/><ellipse cx="208" cy="204" rx="40" ry="24" fill="#1a130a" stroke="url(#gA)" stroke-width="2.5"/></g></svg></div><div class="scene" data-s="2"><img src="img/p3.jpg" alt="" style="object-position:55% 30%"><svg class="hdoc" viewBox="0 0 320 420"><defs><linearGradient id="dp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf7ec"/><stop offset="1" stop-color="#ddd3ba"/></linearGradient></defs>
-<g class="paper"><rect x="18" y="26" width="270" height="360" rx="4" fill="#000" opacity=".45" transform="translate(10 12)"/><rect x="18" y="26" width="270" height="360" rx="4" fill="url(#dp)"/>
-<text x="153" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="600" fill="#2a2010" letter-spacing="1.5">CERTIFIED TRANSLATION</text>
-<text x="153" y="90" text-anchor="middle" font-family="Amiri,serif" font-size="15" fill="#6b5220">ترجمة معتمدة</text>
-<g fill="#cdbf9d"><rect x="40" y="112" width="226" height="5" rx="2"/><rect x="40" y="126" width="200" height="5" rx="2"/><rect x="40" y="140" width="216" height="5" rx="2"/><rect x="40" y="154" width="180" height="5" rx="2"/><rect x="40" y="176" width="226" height="5" rx="2"/><rect x="40" y="190" width="206" height="5" rx="2"/><rect x="40" y="204" width="160" height="5" rx="2"/></g>
-<path d="M44 330c10-18 18 8 28-6s14-10 22 0 12 4 20-4" stroke="#14100a" stroke-width="2" fill="none"/>
-<circle class="rip" cx="208" cy="312" r="46" fill="none" stroke="#f6e2a0" stroke-width="3"/>
-<g class="imp"><circle cx="208" cy="312" r="48" fill="none" stroke="#9e2b3a" stroke-width="5"/><circle cx="208" cy="312" r="38" fill="none" stroke="#9e2b3a" stroke-width="1.6"/><text x="208" y="308" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" font-weight="600" fill="#9e2b3a" letter-spacing="3">EJADA</text><text x="208" y="328" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#9e2b3a">إجادة</text></g></g>
-<g class="stmp"><ellipse cx="208" cy="318" rx="52" ry="10" fill="#000" opacity=".35"/><rect x="160" y="290" width="96" height="24" rx="5" fill="url(#gB)"/><rect x="163" y="312" width="90" height="7" fill="#5a1720"/><path d="M190 290c0-34-18-46-18-80h72c0 34-18 46-18 80Z" fill="#120d07" stroke="#6b5220"/><ellipse cx="208" cy="204" rx="40" ry="24" fill="#1a130a" stroke="url(#gA)" stroke-width="2.5"/></g></svg></div><div class="scene" data-s="3"><img src="img/p1.jpg" alt="" style="object-position:40% 30%"><svg class="hdoc" viewBox="0 0 320 420"><defs><linearGradient id="dp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf7ec"/><stop offset="1" stop-color="#ddd3ba"/></linearGradient></defs>
-<g class="paper"><rect x="18" y="26" width="270" height="360" rx="4" fill="#000" opacity=".45" transform="translate(10 12)"/><rect x="18" y="26" width="270" height="360" rx="4" fill="url(#dp)"/>
-<text x="153" y="66" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-weight="600" fill="#2a2010" letter-spacing="1.5">CERTIFIED TRANSLATION</text>
-<text x="153" y="90" text-anchor="middle" font-family="Amiri,serif" font-size="15" fill="#6b5220">ترجمة معتمدة</text>
-<g fill="#cdbf9d"><rect x="40" y="112" width="226" height="5" rx="2"/><rect x="40" y="126" width="200" height="5" rx="2"/><rect x="40" y="140" width="216" height="5" rx="2"/><rect x="40" y="154" width="180" height="5" rx="2"/><rect x="40" y="176" width="226" height="5" rx="2"/><rect x="40" y="190" width="206" height="5" rx="2"/><rect x="40" y="204" width="160" height="5" rx="2"/></g>
-<path d="M44 330c10-18 18 8 28-6s14-10 22 0 12 4 20-4" stroke="#14100a" stroke-width="2" fill="none"/>
-<circle class="rip" cx="208" cy="312" r="46" fill="none" stroke="#f6e2a0" stroke-width="3"/>
-<g class="imp"><circle cx="208" cy="312" r="48" fill="none" stroke="#9e2b3a" stroke-width="5"/><circle cx="208" cy="312" r="38" fill="none" stroke="#9e2b3a" stroke-width="1.6"/><text x="208" y="308" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" font-weight="600" fill="#9e2b3a" letter-spacing="3">EJADA</text><text x="208" y="328" text-anchor="middle" font-family="Amiri,serif" font-size="14" fill="#9e2b3a">إجادة</text></g></g>
-<g class="stmp"><ellipse cx="208" cy="318" rx="52" ry="10" fill="#000" opacity=".35"/><rect x="160" y="290" width="96" height="24" rx="5" fill="url(#gB)"/><rect x="163" y="312" width="90" height="7" fill="#5a1720"/><path d="M190 290c0-34-18-46-18-80h72c0 34-18 46-18 80Z" fill="#120d07" stroke="#6b5220"/><ellipse cx="208" cy="204" rx="40" ry="24" fill="#1a130a" stroke="url(#gA)" stroke-width="2.5"/></g></svg></div><canvas id="dust"></canvas>
+<div class="film" aria-hidden="true"><div class="scene on" data-s="0"><img src="img/p4.jpg" alt="" style="object-position:60% 40%"></div><div class="scene" data-s="1"><img src="img/p2.jpg" alt="" style="object-position:70% 30%"></div><div class="scene" data-s="2"><img src="img/p3.jpg" alt="" style="object-position:55% 30%"></div><div class="scene" data-s="3"><img src="img/p1.jpg" alt="" style="object-position:40% 30%"></div><canvas id="dust"></canvas>
 </div>
 <div class="grain"></div><div class="vig"></div>
 <div class="wrap htxt">
