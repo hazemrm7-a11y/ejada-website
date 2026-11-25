@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ejada-dubai.com/sitemap.xml
